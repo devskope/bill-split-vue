@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div is="sui-container" class="sticky">
+    <div is="sui-container">
       <sui-menu pointing large secondary>
         <router-link
           v-for="item in navItems"
@@ -31,6 +31,13 @@ import { store } from './store';
 
 export default {
   name: 'BillSplitApp',
+  beforeCreate() {
+    const savedState = JSON.parse(localStorage.getItem('billsplit::state'));
+
+    if (savedState) {
+      store.state = savedState;
+    }
+  },
   data() {
     return {
       navItems: [
@@ -48,6 +55,16 @@ export default {
     logout() {
       this.storeActions.auth.logout();
       this.$router.push({ name: 'home' });
+    },
+  },
+  watch: {
+    state: {
+      handler({ auth: { loggedIn } }) {
+        if (loggedIn) {
+          localStorage.setItem('billsplit::state', JSON.stringify(this.state));
+        }
+      },
+      deep: true,
     },
   },
 };
