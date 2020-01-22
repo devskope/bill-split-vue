@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import { store } from '@/store';
 
 Vue.use(VueRouter);
 
@@ -11,9 +12,21 @@ const routes = [
     component: Home,
   },
   {
+    path: '/auth',
+    name: 'auth',
+    component: Home,
+    props: { auth: true },
+    beforeEnter: (to, from, next) => {
+      setTimeout(
+        () => (store.state.auth.loggedIn ? next('/bills/list') : next()),
+        3,
+      );
+    },
+  },
+  {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/About'),
   },
 ];
 
