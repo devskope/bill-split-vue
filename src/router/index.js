@@ -33,6 +33,14 @@ const routes = [
       setTimeout(() => (auth.loggedIn ? next() : next('/auth')), 3);
     },
   },
+  {
+    path: '/bills/create',
+    name: 'createBill',
+    component: () => import(/* webpackChunkName: "createBill" */ '../views/bills/CreateBill'),
+    beforeEnter: (to, from, next) => {
+      setTimeout(() => (auth.loggedIn ? next() : next('/auth')), 3);
+    },
+  },
 ];
 
 const router = new VueRouter({

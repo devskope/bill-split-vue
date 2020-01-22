@@ -2,6 +2,8 @@ export const buildPath = (a, b) => `${a}${b || ''}`;
 
 export const capitalize = str => str[0].toUpperCase() + str.substring(1);
 
+export const keygen = prefix => `${prefix}-${String(Math.random()).substring(2, 8)}`;
+
 export const validator = {
   isEmail: string => /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
     string,

@@ -47,6 +47,16 @@
       <sui-icon name="info" />
       You haven't added any bill yet
     </sui-header>
+
+    <RouterLink
+      is="sui-button"
+      circular
+      class="add-button"
+      size="large"
+      icon="plus"
+      color="green"
+      :to="{ name: 'createBill' }"
+    />
   </sui-container>
 </template>
 
