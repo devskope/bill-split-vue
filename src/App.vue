@@ -44,6 +44,12 @@ export default {
       },
     };
   },
+  methods: {
+    logout() {
+      this.storeActions.auth.logout();
+      this.$router.push({ name: 'home' });
+    },
+  },
 };
 </script>
 
