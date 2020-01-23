@@ -41,6 +41,11 @@ const routes = [
       setTimeout(() => (auth.loggedIn ? next() : next('/auth')), 3);
     },
   },
+  {
+    path: '*',
+    name: '404',
+    component: () => import(/* webpackChunkName: "404" */ '../views/404'),
+  },
 ];
 
 const router = new VueRouter({
