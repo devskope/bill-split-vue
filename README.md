@@ -1,1 +1,1 @@
-# [BillSplit[vue]](https://https://bill-split-vue.herokuapp.com/bills/list)
+# [BillSplit[vue]](https://bill-split-vue.herokuapp.com)
